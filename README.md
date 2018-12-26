@@ -1,5 +1,5 @@
 # WinProg
-Window desktop program built in C without IDE..
+Window desktop program built in C..
 
 # Command
 ```
