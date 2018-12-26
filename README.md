@@ -1,4 +1,4 @@
-# Intro
+# WinProg
 Window desktop program built in C without IDE..
 
 # Command
