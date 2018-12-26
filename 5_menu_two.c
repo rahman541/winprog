@@ -1,6 +1,9 @@
 #include <windows.h>
 #include <stdio.h>
 
+#define ID_FILE_EXIT 9001
+#define ID_STUFF_GO 9002
+
 const char g_szClassName[] = "myWindowClass";
 
 // Step 4: the Window Procedure
@@ -8,6 +11,30 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch(msg) {
 		case WM_CLOSE: DestroyWindow(hwnd); break;
 		case WM_DESTROY: PostQuitMessage(0); break;
+		case WM_CREATE: {
+			HMENU hMenu, hSubMenu;
+			HICON hIcon, hIconSm;
+
+			hMenu = CreateMenu();
+
+			hSubMenu = CreatePopupMenu();
+			AppendMenu(hSubMenu, MF_STRING, ID_FILE_EXIT, "E&xit");
+			AppendMenu(hMenu, MF_STRING | MF_POPUP, (UINT)hSubMenu, "&Stuff");
+
+			SetMenu(hwnd, hMenu);
+
+			hIcon = LoadImage(NULL, "menu_one.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
+			if (hIcon)
+				SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+			else
+				MessageBox(hwnd, "Could not load large icon!", "Error", MB_OK | MB_ICONERROR);
+
+			hIconSm = LoadImage(NULL, "menu_one.ico", IMAGE_ICON, 16, 16, LR_LOADFROMFILE);
+			if (hIconSm)
+				SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)hIconSm);
+			else
+				MessageBox(hwnd, "Could not load small icon!", "Error", MB_OK | MB_ICONERROR);
+		} break;
 		default: return DefWindowProc(hwnd, msg, wParam, lParam);
 	}
 	return 0;
