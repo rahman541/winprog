@@ -5,7 +5,7 @@ Window desktop program built in C without IDE..
 ```
 # compile
 gcc -o output.exe menu_one.c
-# compile resource
+# compile resource (mingw)
 windres res.rc -O coff -o my.res
 ```
 
