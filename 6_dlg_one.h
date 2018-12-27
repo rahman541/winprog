@@ -1,0 +1,3 @@
+#define IDM_MYMENURESOURCE 3
+#define IDM_FILE_EXIT 4
+#define IDM_HELP_ABOUT 5
