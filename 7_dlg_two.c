@@ -83,8 +83,10 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     MSG msg = { };
     while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+        if(!IsDialogMessage(g_hToolbar, &msg)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
     }
 
     return 0;
