@@ -17,6 +17,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.lpfnWndProc   = WindowProc;
     wc.hInstance     = hInstance;
     wc.lpszClassName = "myClass";
+    wc.lpszMenuName =  MAKEINTRESOURCE(IDM_MYMENURESOURCE);
 
     RegisterClass(&wc);
 
